@@ -1,0 +1,91 @@
+{
+ "data": [
+  {
+   "isHeader": true,
+   "category": "Uncategorized"
+  },
+  {
+   "id": 1,
+   "work": "Hospitals/Dispensary (construction work)",
+   "office_name": "CPM (Health) P",
+   "address": null,
+   "phone": "0000000000",
+   "fax": "0000000000",
+   "category": null,
+   "file_url": null,
+   "isHeader": false
+  },
+  {
+   "id": 2,
+   "work": "Hospitals/Dispensary (Maintenance works)",
+   "office_name": "Health Zone",
+   "address": "Health Zone, 2nd Floor, MSO Building, I.P.Estate, New Delhi-110002Email ID: someone@example.org",
+   "phone": "0000000000",
+   "fax": "0000000000",
+   "category": null,
+   "file_url": null,
+   "isHeader": false
+  },
+  {
+   "id": 3,
+   "work": "Education construction i/e monitoring committee of Education Department",
+   "office_name": "Project Zone",
+   "address": "Project Zone, 1st Floor, MSO Building, New Delhi-110002Email ID: someone@example.org",
+   "phone": "0000000000",
+   "fax": "0000000000",
+   "category": null,
+   "file_url": null,
+   "isHeader": false
+  },
+  {
+   "id": 4,
+   "work": "Courts (maintenance works)",
+   "office_name": "South Maintenance Zone",
+   "address": "South Maintenance Zone, 7th Floor, MSO Building, I.P.Estate, New Delhi-110002Email ID: someone@example.org",
+   "phone": "0000000000",
+   "fax": null,
+   "category": null,
+   "file_url": null,
+   "isHeader": false
+  },
+  {
+   "id": 5,
+   "work": "Social Welfare Department.",
+   "office_name": "North Maintenance Zone",
+   "address": "North Maintenance Zone, 5th Floor, MSO Building, I.P.Estate, New Delhi-110002Email ID: someone@example.org",
+   "phone": "0000000000",
+   "fax": "0000000000",
+   "category": null,
+   "file_url": null,
+   "isHeader": false
+  },
+  {
+   "id": 6,
+   "work": "All Police Works- Construction",
+   "office_name": "East Maintenance Zone",
+   "address": "East Maintenance Zone, 3rd Floor, MSO Building, I. P. Estate, New Delhi - 110002Email ID: someone@example.org",
+   "phone": "0000000000",
+   "fax": "0000000000",
+   "category": null,
+   "file_url": null,
+   "isHeader": false
+  },
+  {
+   "id": 7,
+   "work": "All Fire Station works",
+   "office_name": "East Maintenance Zone",
+   "address": "East Maintenance Zone, 3rd Floor, MSO Building, I. P. Estate, New Delhi - 110002Email ID: someone@example.org",
+   "phone": "0000000000",
+   "fax": "0000000000",
+   "category": null,
+   "file_url": null,
+   "isHeader": false
+  }
+ ],
+ "success": true,
+ "loadedRecords": 378,
+ "hasMore": false,
+ "pageSize": 10000,
+ "totalCount": 363,
+ "currentPage": 1
+}

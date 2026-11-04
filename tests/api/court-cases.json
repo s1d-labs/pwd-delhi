@@ -1,0 +1,355 @@
+{
+ "reportType": "list_of_cases",
+ "data": {
+  "cases": [
+   {
+    "id": 2454,
+    "case_number": "PWD/2025-26/CP/0018",
+    "financial_year": "2025-26",
+    "case_type_id": 5,
+    "case_category_id": 14,
+    "court_id": 53,
+    "court_name_other": null,
+    "case_no_in_court": "437/2026",
+    "court_room_name": null,
+    "case_title": "Test case title 1",
+    "subject": "Contempt Petition in the matter of Test person for regularization",
+    "status_remarks": "Ongoing",
+    "filing_date": "2026-03-17T18:30:00.000Z",
+    "date_of_receipt_of_notice": "2026-03-17T18:30:00.000Z",
+    "pwd_role": "respondent",
+    "opposite_party": null,
+    "opposition_name": null,
+    "opposition_type": null,
+    "opposition_contact_person": null,
+    "opposition_phone": null,
+    "opposition_email": null,
+    "opposition_address": null,
+    "opposition_pan": null,
+    "opposition_gstin": null,
+    "claim_by_opposition_amount": null,
+    "claim_by_opposition_description": null,
+    "opposition_representative_advocate": null,
+    "opposition_representative_contact": null,
+    "pwd_department_id": null,
+    "pwd_zone_id": 8,
+    "pwd_circle_id": 25,
+    "pwd_division_id": 449,
+    "pwd_subdivision_id": null,
+    "pms_project_id": null,
+    "related_case_ids": null,
+    "amount_involved": null,
+    "current_status": "reply_filed",
+    "risk_level": "medium",
+    "next_hearing_date": "2027-02-10T00:00:00.000Z",
+    "diary_summary": "Contempt Petition has been filed by the petitioner for non compliance of judgement dated 19.11.2025 passed by Honble Delhi High Court in writ petition (Civil) 8197 filed in year 2023. Speaking order has already been passed in compliance of order of Honble Delhi High Court dated 27.01.2026 and the same has been sent to the petitioners as well as their advocate. The petitioner are now pursuing the other directions passed by the Honble Delhi High Court in the said matter regarding their regularization whereas the speaking order is agaisnt the regularization.",
+    "created_by": 4714,
+    "updated_by": null,
+    "is_deleted": false,
+    "deleted_at": null,
+    "deleted_by": null,
+    "is_archived": false,
+    "is_secretariat": false,
+    "is_work_related": false,
+    "work_details": null,
+    "created_at": "2026-10-29T10:18:56.936Z",
+    "updated_at": "2026-10-29T10:18:56.936Z",
+    "court": {
+     "id": 53,
+     "name": "Delhi High Court"
+    },
+    "caseType": {
+     "id": 5,
+     "name": "Contempt Petition",
+     "short_code": "CP"
+    },
+    "caseCategory": {
+     "id": 14,
+     "name": "Civil"
+    },
+    "zone": {
+     "id": 8,
+     "name": "Judiciary & Project Zone"
+    },
+    "circle": {
+     "id": 25,
+     "name": "Judiciary & Project Circle"
+    },
+    "division": {
+     "id": 449,
+     "name": "Judiciary Electrical Division I"
+    },
+    "subdivision": null,
+    "concernOfficers": [
+     {
+      "id": 801,
+      "case_id": 2454,
+      "user_id": 4714,
+      "is_primary": true,
+      "created_by": 4714,
+      "updated_by": null,
+      "created_at": "2026-10-29T10:18:56.942Z",
+      "updated_at": "2026-10-29T10:18:56.942Z",
+      "user": {
+       "id": 4714,
+       "username": "USER0001",
+       "first_name": "Test first name 2",
+       "last_name": "",
+       "email": "someone@example.org",
+       "designation_id": 220,
+       "office_id": 7093,
+       "phone": "0000000000",
+       "designation": {
+        "id": 220,
+        "name": "Executive Engineer"
+       },
+       "office": {
+        "id": 7093,
+        "office_name": "Judiciary Electrical Division I"
+       }
+      }
+     }
+    ],
+    "caseAdvocates": [],
+    "hearingNotes": [
+     {
+      "id": 5106,
+      "hearing_date": "2026-08-02T18:30:00.000Z",
+      "next_hearing_date": "2027-02-10",
+      "proceedings": "Ongoing"
+     }
+    ],
+    "effective_next_hearing_date": "2027-02-10",
+    "latest_proceedings": "Ongoing"
+   },
+   {
+    "id": 2453,
+    "case_number": "PWD/2026-27/WP/0005",
+    "financial_year": "2026-27",
+    "case_type_id": 2,
+    "case_category_id": 5,
+    "court_id": 2,
+    "court_name_other": null,
+    "case_no_in_court": "W.P.(C)-1576/2026",
+    "court_room_name": null,
+    "case_title": "Test case title 3",
+    "subject": "Regarding Salary and Bonus",
+    "status_remarks": "Hearing continue",
+    "filing_date": null,
+    "date_of_receipt_of_notice": null,
+    "pwd_role": "respondent",
+    "opposite_party": null,
+    "opposition_name": null,
+    "opposition_type": null,
+    "opposition_contact_person": null,
+    "opposition_phone": null,
+    "opposition_email": null,
+    "opposition_address": null,
+    "opposition_pan": null,
+    "opposition_gstin": null,
+    "claim_by_opposition_amount": null,
+    "claim_by_opposition_description": null,
+    "opposition_representative_advocate": null,
+    "opposition_representative_contact": null,
+    "pwd_department_id": null,
+    "pwd_zone_id": 7,
+    "pwd_circle_id": 24,
+    "pwd_division_id": 66,
+    "pwd_subdivision_id": null,
+    "pms_project_id": null,
+    "related_case_ids": null,
+    "amount_involved": null,
+    "current_status": "fresh",
+    "risk_level": "medium",
+    "next_hearing_date": "2026-11-02T00:00:00.000Z",
+    "diary_summary": "Regarding Salary and Bonus",
+    "created_by": 6349,
+    "updated_by": null,
+    "is_deleted": false,
+    "deleted_at": null,
+    "deleted_by": null,
+    "is_archived": false,
+    "is_secretariat": false,
+    "is_work_related": false,
+    "work_details": null,
+    "created_at": "2026-10-21T07:14:56.763Z",
+    "updated_at": "2026-10-21T07:14:56.763Z",
+    "court": {
+     "id": 2,
+     "name": "High Court of Delhi"
+    },
+    "caseType": {
+     "id": 2,
+     "name": "Writ Petition",
+     "short_code": "WP"
+    },
+    "caseCategory": {
+     "id": 5,
+     "name": "Labour Dispute"
+    },
+    "zone": {
+     "id": 7,
+     "name": "Health Zone"
+    },
+    "circle": {
+     "id": 24,
+     "name": "Health Electrical Circle -I"
+    },
+    "division": {
+     "id": 66,
+     "name": "Health East Elect Maintenance Division"
+    },
+    "subdivision": null,
+    "concernOfficers": [
+     {
+      "id": 797,
+      "case_id": 2453,
+      "user_id": 6349,
+      "is_primary": true,
+      "created_by": 6349,
+      "updated_by": null,
+      "created_at": "2026-10-21T07:14:56.769Z",
+      "updated_at": "2026-10-21T07:14:56.769Z",
+      "user": {
+       "id": 6349,
+       "username": "USER0001",
+       "first_name": "Test first name 4",
+       "last_name": "Test last name 5",
+       "email": "someone@example.org",
+       "designation_id": 220,
+       "office_id": 1079,
+       "phone": "0000000000",
+       "designation": {
+        "id": 220,
+        "name": "Executive Engineer"
+       },
+       "office": {
+        "id": 1079,
+        "office_name": "Health East Elect Maintenance Division"
+       }
+      }
+     }
+    ],
+    "caseAdvocates": [
+     {
+      "id": 1806,
+      "status": "active",
+      "btf_number": null,
+      "appointment_type": "govt_counsel",
+      "advocate": {
+       "id": 297,
+       "name": "Test name 6",
+       "bar_council_id": null,
+       "phone": "0000000000",
+       "email": null
+      }
+     }
+    ],
+    "hearingNotes": [
+     {
+      "id": 5105,
+      "hearing_date": "2026-07-06T18:30:00.000Z",
+      "next_hearing_date": "2026-11-02",
+      "proceedings": ""
+     }
+    ],
+    "effective_next_hearing_date": "2026-11-02",
+    "latest_proceedings": null
+   },
+   {
+    "id": 2455,
+    "case_number": "PWD/2025-26/CIV/0113",
+    "financial_year": "2025-26",
+    "case_type_id": 12,
+    "case_category_id": 4,
+    "court_id": 51,
+    "court_name_other": null,
+    "case_no_in_court": "ALC-II/36/352/2026",
+    "court_room_name": null,
+    "case_title": "Test case title 7",
+    "subject": "Regarding Non- Payment of Gratuity",
+    "status_remarks": "hearing continue",
+    "filing_date": "2025-12-31T18:30:00.000Z",
+    "date_of_receipt_of_notice": null,
+    "pwd_role": "respondent",
+    "opposite_party": null,
+    "opposition_name": null,
+    "opposition_type": null,
+    "opposition_contact_person": null,
+    "opposition_phone": null,
+    "opposition_email": null,
+    "opposition_address": null,
+    "opposition_pan": null,
+    "opposition_gstin": null,
+    "claim_by_opposition_amount": null,
+    "claim_by_opposition_description": null,
+    "opposition_representative_advocate": null,
+    "opposition_representative_contact": null,
+    "pwd_department_id": null,
+    "pwd_zone_id": 7,
+    "pwd_circle_id": 24,
+    "pwd_division_id": 66,
+    "pwd_subdivision_id": null,
+    "pms_project_id": null,
+    "related_case_ids": null,
+    "amount_involved": null,
+    "current_status": "fresh",
+    "risk_level": "medium",
+    "next_hearing_date": "2026-12-08T00:00:00.000Z",
+    "diary_summary": "Regarding Non- Payment of Gratuity",
+    "created_by": 6349,
+    "updated_by": null,
+    "is_deleted": false,
+    "deleted_at": null,
+    "deleted_by": null,
+    "is_archived": false,
+    "is_secretariat": false,
+    "is_work_related": false,
+    "work_details": null,
+    "created_at": "2026-10-31T09:42:40.461Z",
+    "updated_at": "2026-10-31T09:42:40.461Z",
+    "court": {
+     "id": 51,
+     "name": "Assistant Labour Commissioner, Dwarka Court"
+    },
+    "caseType": {
+     "id": 12,
+     "name": "Civil",
+     "short_code": "CIV"
+    },
+    "caseCategory": {
+     "id": 4,
+     "name": "Service Matter"
+    },
+    "zone": {
+     "id": 7,
+     "name": "Health Zone"
+    },
+    "circle": {
+     "id": 24,
+     "name": "Health Electrical Circle -I"
+    },
+    "division": {
+     "id": 66,
+     "name": "Health East Elect Maintenance Division"
+    },
+    "subdivision": null,
+    "concernOfficers": [],
+    "caseAdvocates": [],
+    "hearingNotes": [],
+    "effective_next_hearing_date": "2026-12-08T00:00:00.000Z",
+    "latest_proceedings": null
+   }
+  ],
+  "pagination": {
+   "currentPage": 1,
+   "totalPages": 9,
+   "totalItems": 818,
+   "itemsPerPage": 100,
+   "hasNextPage": true,
+   "hasPrevPage": false
+  }
+ },
+ "success": true,
+ "reportTitle": "List of Court Cases"
+}

@@ -1,0 +1,317 @@
+{
+ "reportType": "list_of_cases",
+ "data": {
+  "cases": [
+   {
+    "id": 1413,
+    "case_number": "PWD/2025-26/CIV/0112",
+    "financial_year": "2025-26",
+    "case_type_id": 12,
+    "case_category_id": 10,
+    "court_id": 17,
+    "court_name_other": null,
+    "case_no_in_court": "CS(COMM)/325/2025",
+    "court_room_name": null,
+    "case_title": "Test case title 1",
+    "subject": null,
+    "status_remarks": null,
+    "filing_date": null,
+    "date_of_receipt_of_notice": null,
+    "pwd_role": "respondent",
+    "opposite_party": null,
+    "opposition_name": null,
+    "opposition_type": null,
+    "opposition_contact_person": null,
+    "opposition_phone": null,
+    "opposition_email": null,
+    "opposition_address": null,
+    "opposition_pan": null,
+    "opposition_gstin": null,
+    "claim_by_opposition_amount": null,
+    "claim_by_opposition_description": null,
+    "opposition_representative_advocate": null,
+    "opposition_representative_contact": null,
+    "pwd_department_id": null,
+    "pwd_zone_id": 3,
+    "pwd_circle_id": 4,
+    "pwd_division_id": 10,
+    "pwd_subdivision_id": 812,
+    "pms_project_id": null,
+    "related_case_ids": null,
+    "amount_involved": null,
+    "current_status": "-",
+    "risk_level": "medium",
+    "next_hearing_date": "2025-12-03T18:38:50.000Z",
+    "diary_summary": "Matter under District Saket Court.",
+    "created_by": 1,
+    "updated_by": null,
+    "is_deleted": false,
+    "deleted_at": null,
+    "deleted_by": null,
+    "is_archived": true,
+    "is_secretariat": false,
+    "is_work_related": true,
+    "work_details": "Face-lifting and minor repairs of Civil and Electrical works DSEU's Campuses, G.B. Pant Polytechnic College, Okhla Phase- III, New Delhi",
+    "created_at": "2025-12-13T15:26:51.878Z",
+    "updated_at": "2025-12-13T15:26:51.878Z",
+    "court": {
+     "id": 17,
+     "name": "District Court"
+    },
+    "caseType": {
+     "id": 12,
+     "name": "Civil",
+     "short_code": "CIV"
+    },
+    "caseCategory": {
+     "id": 10,
+     "name": "Other"
+    },
+    "zone": {
+     "id": 3,
+     "name": "South Maintenance Zone"
+    },
+    "circle": {
+     "id": 4,
+     "name": "South East Maintenance Circle"
+    },
+    "division": {
+     "id": 10,
+     "name": "South East Building Maintenance Division"
+    },
+    "subdivision": {
+     "id": 812,
+     "name": "South East Bldg Sub Division 2 (M 4212)"
+    },
+    "concernOfficers": [],
+    "caseAdvocates": [],
+    "hearingNotes": [
+     {
+      "id": 4211,
+      "hearing_date": "2025-12-03T18:38:50.000Z",
+      "next_hearing_date": null,
+      "proceedings": "Hearing on 04/12/2025"
+     },
+     {
+      "id": 4210,
+      "hearing_date": null,
+      "next_hearing_date": null,
+      "proceedings": "Matter under District Court."
+     }
+    ],
+    "effective_next_hearing_date": "2025-12-03T18:38:50.000Z",
+    "latest_proceedings": "Hearing on 04/12/2025"
+   },
+   {
+    "id": 1412,
+    "case_number": "PWD/2025-26/CIV/0111",
+    "financial_year": "2025-26",
+    "case_type_id": 12,
+    "case_category_id": 14,
+    "court_id": 17,
+    "court_name_other": null,
+    "case_no_in_court": "2329",
+    "court_room_name": null,
+    "case_title": "Test case title 2",
+    "subject": null,
+    "status_remarks": null,
+    "filing_date": null,
+    "date_of_receipt_of_notice": null,
+    "pwd_role": "respondent",
+    "opposite_party": null,
+    "opposition_name": null,
+    "opposition_type": null,
+    "opposition_contact_person": null,
+    "opposition_phone": null,
+    "opposition_email": null,
+    "opposition_address": null,
+    "opposition_pan": null,
+    "opposition_gstin": null,
+    "claim_by_opposition_amount": null,
+    "claim_by_opposition_description": null,
+    "opposition_representative_advocate": null,
+    "opposition_representative_contact": null,
+    "pwd_department_id": null,
+    "pwd_zone_id": 3,
+    "pwd_circle_id": 4,
+    "pwd_division_id": 10,
+    "pwd_subdivision_id": 812,
+    "pms_project_id": null,
+    "related_case_ids": null,
+    "amount_involved": null,
+    "current_status": "-",
+    "risk_level": "medium",
+    "next_hearing_date": "2025-08-27T18:38:50.000Z",
+    "diary_summary": "Case under process.",
+    "created_by": 1,
+    "updated_by": null,
+    "is_deleted": false,
+    "deleted_at": null,
+    "deleted_by": null,
+    "is_archived": true,
+    "is_secretariat": false,
+    "is_work_related": true,
+    "work_details": "Face-lifting and minor repairs of DSEU's Campuses - Delhi Institute of Tool Engineering, Okhla Phase-II, New Delhi (SH: Civil and Electrical work).",
+    "created_at": "2025-12-13T15:26:51.873Z",
+    "updated_at": "2025-12-13T15:26:51.873Z",
+    "court": {
+     "id": 17,
+     "name": "District Court"
+    },
+    "caseType": {
+     "id": 12,
+     "name": "Civil",
+     "short_code": "CIV"
+    },
+    "caseCategory": {
+     "id": 14,
+     "name": "Civil"
+    },
+    "zone": {
+     "id": 3,
+     "name": "South Maintenance Zone"
+    },
+    "circle": {
+     "id": 4,
+     "name": "South East Maintenance Circle"
+    },
+    "division": {
+     "id": 10,
+     "name": "South East Building Maintenance Division"
+    },
+    "subdivision": {
+     "id": 812,
+     "name": "South East Bldg Sub Division 2 (M 4212)"
+    },
+    "concernOfficers": [],
+    "caseAdvocates": [],
+    "hearingNotes": [
+     {
+      "id": 4207,
+      "hearing_date": "2025-08-27T18:38:50.000Z",
+      "next_hearing_date": null,
+      "proceedings": "Hearing on 28/08/2025"
+     },
+     {
+      "id": 4208,
+      "hearing_date": null,
+      "next_hearing_date": null,
+      "proceedings": "Case under process."
+     },
+     {
+      "id": 4209,
+      "hearing_date": "2025-02-10T18:38:50.000Z",
+      "next_hearing_date": null,
+      "proceedings": "Hearing on 11/02/2025"
+     }
+    ],
+    "effective_next_hearing_date": "2025-08-27T18:38:50.000Z",
+    "latest_proceedings": "Hearing on 28/08/2025"
+   },
+   {
+    "id": 1411,
+    "case_number": "PWD/2025-26/CIV/0110",
+    "financial_year": "2025-26",
+    "case_type_id": 12,
+    "case_category_id": 10,
+    "court_id": 35,
+    "court_name_other": null,
+    "case_no_in_court": null,
+    "court_room_name": null,
+    "case_title": "Test case title 3",
+    "subject": null,
+    "status_remarks": null,
+    "filing_date": null,
+    "date_of_receipt_of_notice": null,
+    "pwd_role": "respondent",
+    "opposite_party": null,
+    "opposition_name": null,
+    "opposition_type": null,
+    "opposition_contact_person": null,
+    "opposition_phone": null,
+    "opposition_email": null,
+    "opposition_address": null,
+    "opposition_pan": null,
+    "opposition_gstin": null,
+    "claim_by_opposition_amount": null,
+    "claim_by_opposition_description": null,
+    "opposition_representative_advocate": null,
+    "opposition_representative_contact": null,
+    "pwd_department_id": null,
+    "pwd_zone_id": 3,
+    "pwd_circle_id": 4,
+    "pwd_division_id": 10,
+    "pwd_subdivision_id": 812,
+    "pms_project_id": null,
+    "related_case_ids": null,
+    "amount_involved": null,
+    "current_status": "-",
+    "risk_level": "medium",
+    "next_hearing_date": "2025-07-21T18:38:50.000Z",
+    "diary_summary": "Case under process. N.D.O.H. :-07.08.2025",
+    "created_by": 1,
+    "updated_by": null,
+    "is_deleted": false,
+    "deleted_at": null,
+    "deleted_by": null,
+    "is_archived": true,
+    "is_secretariat": false,
+    "is_work_related": true,
+    "work_details": "Face-lifting and minor repairs of Civil and Electrical works DSEU's Campuses, G.B. Pant Polytechnic College, Okhla Phase- III, New Delhi",
+    "created_at": "2025-12-13T15:26:51.868Z",
+    "updated_at": "2025-12-13T15:26:51.868Z",
+    "court": {
+     "id": 35,
+     "name": "Unknown"
+    },
+    "caseType": {
+     "id": 12,
+     "name": "Civil",
+     "short_code": "CIV"
+    },
+    "caseCategory": {
+     "id": 10,
+     "name": "Other"
+    },
+    "zone": {
+     "id": 3,
+     "name": "South Maintenance Zone"
+    },
+    "circle": {
+     "id": 4,
+     "name": "South East Maintenance Circle"
+    },
+    "division": {
+     "id": 10,
+     "name": "South East Building Maintenance Division"
+    },
+    "subdivision": {
+     "id": 812,
+     "name": "South East Bldg Sub Division 2 (M 4212)"
+    },
+    "concernOfficers": [],
+    "caseAdvocates": [],
+    "hearingNotes": [
+     {
+      "id": 4206,
+      "hearing_date": "2025-07-21T18:38:50.000Z",
+      "next_hearing_date": null,
+      "proceedings": "Case under process."
+     }
+    ],
+    "effective_next_hearing_date": "2025-07-21T18:38:50.000Z",
+    "latest_proceedings": "Case under process."
+   }
+  ],
+  "pagination": {
+   "currentPage": 1,
+   "totalPages": 14,
+   "totalItems": 1331,
+   "itemsPerPage": 100,
+   "hasNextPage": true,
+   "hasPrevPage": false
+  }
+ },
+ "success": true,
+ "reportTitle": "List of Court Cases"
+}

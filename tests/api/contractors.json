@@ -1,0 +1,65 @@
+{
+ "success": true,
+ "data": [
+  {
+   "id": 12236,
+   "name": "",
+   "company_name": null,
+   "contact_person": null,
+   "phone": "0000000000",
+   "email": "someone@example.org",
+   "address": "Test address 1",
+   "registration_no": null,
+   "pan_no": "AAAAA0000A",
+   "gst_no": "",
+   "department_id": 1,
+   "is_active": true,
+   "created_at": "2026-01-31T07:18:37.774Z",
+   "updated_at": "2026-01-31T07:18:37.774Z",
+   "offices": [],
+   "bankDetails": []
+  },
+  {
+   "id": 8887,
+   "name": "10 Decimal Design Studio",
+   "company_name": "Test Firm 2",
+   "contact_person": null,
+   "phone": "",
+   "email": null,
+   "address": "Test address 3",
+   "registration_no": null,
+   "pan_no": "AAAAA0000A",
+   "gst_no": "",
+   "department_id": 1,
+   "is_active": true,
+   "created_at": "2026-01-28T11:16:22.018Z",
+   "updated_at": "2026-01-28T11:16:22.018Z",
+   "offices": [],
+   "bankDetails": []
+  },
+  {
+   "id": 8888,
+   "name": "1ST ALARM SYSTEM",
+   "company_name": null,
+   "contact_person": null,
+   "phone": null,
+   "email": null,
+   "address": "Test address 4",
+   "registration_no": null,
+   "pan_no": "AAAAA0000A",
+   "gst_no": "",
+   "department_id": 1,
+   "is_active": true,
+   "created_at": "2026-01-28T11:16:22.018Z",
+   "updated_at": "2026-01-28T11:16:22.018Z",
+   "offices": [],
+   "bankDetails": []
+  }
+ ],
+ "pagination": {
+  "total": 9014,
+  "page": 1,
+  "limit": 100,
+  "totalPages": 91
+ }
+}

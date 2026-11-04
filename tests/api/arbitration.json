@@ -1,0 +1,325 @@
+{
+ "reportType": "general",
+ "data": {
+  "cases": [
+   {
+    "id": 1457,
+    "arbitration_number": "ARB/M/0005",
+    "financial_year": "-",
+    "case_title": "Test case title 1",
+    "external_case_number": "ARB/SCV/140",
+    "work_name": "C/o 100 bedded hospital at Pooth Khurd, Delhi. (Balance work)",
+    "work_description": null,
+    "tender_amount": "0.00",
+    "planned_completion_date": null,
+    "actual_completion_date": null,
+    "total_claim_amount": "28612882.00",
+    "total_counter_claim_amount": "0.00",
+    "award_description": null,
+    "award_amount": "0.00",
+    "award_date": null,
+    "interest_rate": null,
+    "interest_from_date": null,
+    "interest_amount": "0.00",
+    "interest_upto_date": null,
+    "acceptance_status": "pending",
+    "acceptance_by": null,
+    "acceptance_date": null,
+    "acceptance_remarks": null,
+    "case_registration_date": null,
+    "notice_date": null,
+    "notice_receipt_date": null,
+    "fact_submitted_date": null,
+    "counter_fact_submitted_date": null,
+    "first_hearing_date": null,
+    "next_hearing_date": null,
+    "closing_date": "2019-01-01",
+    "arbitration_type": null,
+    "arbitration_institution": null,
+    "special_points": "Transferred to Health Maintenance Division B.S.A Hospital, Rohini, Delhi.",
+    "remarks": "Transferred to Health Maintenance Division B.S.A Hospital, Rohini, Delhi.",
+    "pwd_zone_id": 5,
+    "pwd_circle_id": 15,
+    "pwd_division_id": 41,
+    "pwd_subdivision_id": null,
+    "is_secretariat": false,
+    "pms_project_id": null,
+    "related_case_ids": [],
+    "current_status": "closed",
+    "risk_level": null,
+    "created_by": null,
+    "updated_by": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null,
+    "zone": {
+     "id": 5,
+     "name": "North Maintenance Zone"
+    },
+    "circle": {
+     "id": 15,
+     "name": "North West Maintenance Circle"
+    },
+    "division": {
+     "id": 41,
+     "name": "North West Building Division"
+    },
+    "subdivision": null,
+    "parties": [
+     {
+      "id": 2653,
+      "party_type": "claimant",
+      "party_name": "Test party name 2",
+      "claim_amount": "28612882.00"
+     }
+    ],
+    "caseArbitrators": [
+     {
+      "id": 3127,
+      "appointment_date": null,
+      "arbitrator_role": null,
+      "arbitrator": {
+       "id": 3,
+       "name": "Test name 3",
+       "specialization": null,
+       "phone": null,
+       "email": null
+      }
+     },
+     {
+      "id": 3411,
+      "appointment_date": null,
+      "arbitrator_role": "approved",
+      "arbitrator": {
+       "id": 87,
+       "name": "Test name 4",
+       "specialization": null,
+       "phone": null,
+       "email": null
+      }
+     }
+    ],
+    "hearings": [
+     {
+      "id": 343,
+      "hearing_date": null,
+      "next_hearing_date": null,
+      "proceedings": null
+     }
+    ],
+    "office_display": "North Maintenance Zone / North West Maintenance Circle / North West Building Division",
+    "arbitrator_names": "Test arbitrator names 5",
+    "contractor_name": ""
+   },
+   {
+    "id": 1468,
+    "arbitration_number": "ARB/M/0007",
+    "financial_year": "-",
+    "case_title": "Test case title 6",
+    "external_case_number": "KV/MAA/197",
+    "work_name": "C/O FLYOVERS AND OUTER RING ROAD AT MAA ANAND MAYEE INTERSECTION AND KHEL GAON MARG INERSECTION.",
+    "work_description": null,
+    "tender_amount": "2193.48",
+    "planned_completion_date": "2004-03-18",
+    "actual_completion_date": null,
+    "total_claim_amount": "0.00",
+    "total_counter_claim_amount": "0.00",
+    "award_description": null,
+    "award_amount": "0.00",
+    "award_date": null,
+    "interest_rate": null,
+    "interest_from_date": null,
+    "interest_amount": "0.00",
+    "interest_upto_date": null,
+    "acceptance_status": "pending",
+    "acceptance_by": null,
+    "acceptance_date": null,
+    "acceptance_remarks": null,
+    "case_registration_date": null,
+    "notice_date": null,
+    "notice_receipt_date": null,
+    "fact_submitted_date": null,
+    "counter_fact_submitted_date": null,
+    "first_hearing_date": null,
+    "next_hearing_date": "2007-07-06",
+    "closing_date": null,
+    "arbitration_type": null,
+    "arbitration_institution": null,
+    "special_points": null,
+    "remarks": null,
+    "pwd_zone_id": 7,
+    "pwd_circle_id": 22,
+    "pwd_division_id": 57,
+    "pwd_subdivision_id": null,
+    "is_secretariat": false,
+    "pms_project_id": null,
+    "related_case_ids": [],
+    "current_status": "arbitrator_appointed",
+    "risk_level": null,
+    "created_by": null,
+    "updated_by": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null,
+    "zone": {
+     "id": 7,
+     "name": "Health Zone"
+    },
+    "circle": {
+     "id": 22,
+     "name": "Health Circle I"
+    },
+    "division": {
+     "id": 57,
+     "name": "Health Central & South Project Division"
+    },
+    "subdivision": null,
+    "parties": [
+     {
+      "id": 2664,
+      "party_type": "claimant",
+      "party_name": "Test party name 7",
+      "claim_amount": "0.00"
+     }
+    ],
+    "caseArbitrators": [
+     {
+      "id": 3139,
+      "appointment_date": null,
+      "arbitrator_role": null,
+      "arbitrator": {
+       "id": 6,
+       "name": "Test name 8",
+       "specialization": null,
+       "phone": null,
+       "email": null
+      }
+     },
+     {
+      "id": 3418,
+      "appointment_date": null,
+      "arbitrator_role": "approved",
+      "arbitrator": {
+       "id": 89,
+       "name": "Test name 9",
+       "specialization": null,
+       "phone": null,
+       "email": null
+      }
+     }
+    ],
+    "hearings": [
+     {
+      "id": 352,
+      "hearing_date": null,
+      "next_hearing_date": "2007-07-06",
+      "proceedings": null
+     }
+    ],
+    "office_display": "Health Zone / Health Circle I / Health Central & South Project Division",
+    "arbitrator_names": "Test arbitrator names 10",
+    "contractor_name": ""
+   },
+   {
+    "id": 1449,
+    "arbitration_number": "ARB/M/0002",
+    "financial_year": "-",
+    "case_title": "Test case title 11",
+    "external_case_number": "0",
+    "work_name": "C/o Compound wall at Sarvodaya Vidyalaya at B-4, Pkt-10, Narela,Delhi.",
+    "work_description": null,
+    "tender_amount": "11.67",
+    "planned_completion_date": null,
+    "actual_completion_date": null,
+    "total_claim_amount": "0.00",
+    "total_counter_claim_amount": "0.00",
+    "award_description": null,
+    "award_amount": "0.00",
+    "award_date": "2007-04-06",
+    "interest_rate": null,
+    "interest_from_date": null,
+    "interest_amount": "0.00",
+    "interest_upto_date": null,
+    "acceptance_status": "pending",
+    "acceptance_by": null,
+    "acceptance_date": null,
+    "acceptance_remarks": null,
+    "case_registration_date": null,
+    "notice_date": null,
+    "notice_receipt_date": null,
+    "fact_submitted_date": null,
+    "counter_fact_submitted_date": null,
+    "first_hearing_date": null,
+    "next_hearing_date": null,
+    "closing_date": "2007-04-06",
+    "arbitration_type": null,
+    "arbitration_institution": null,
+    "special_points": null,
+    "remarks": null,
+    "pwd_zone_id": 5,
+    "pwd_circle_id": 15,
+    "pwd_division_id": 41,
+    "pwd_subdivision_id": null,
+    "is_secretariat": false,
+    "pms_project_id": null,
+    "related_case_ids": [],
+    "current_status": "closed",
+    "risk_level": null,
+    "created_by": null,
+    "updated_by": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null,
+    "zone": {
+     "id": 5,
+     "name": "North Maintenance Zone"
+    },
+    "circle": {
+     "id": 15,
+     "name": "North West Maintenance Circle"
+    },
+    "division": {
+     "id": 41,
+     "name": "North West Building Division"
+    },
+    "subdivision": null,
+    "parties": [
+     {
+      "id": 2645,
+      "party_type": "claimant",
+      "party_name": "Test party name 12",
+      "claim_amount": "0.00"
+     }
+    ],
+    "caseArbitrators": [
+     {
+      "id": 3122,
+      "appointment_date": null,
+      "arbitrator_role": null,
+      "arbitrator": {
+       "id": 3,
+       "name": "Test name 13",
+       "specialization": null,
+       "phone": null,
+       "email": null
+      }
+     }
+    ],
+    "hearings": [],
+    "office_display": "North Maintenance Zone / North West Maintenance Circle / North West Building Division",
+    "arbitrator_names": "Test arbitrator names 14",
+    "contractor_name": ""
+   }
+  ],
+  "pagination": {
+   "currentPage": 1,
+   "totalPages": 4,
+   "totalItems": 390,
+   "itemsPerPage": 100,
+   "hasNextPage": true,
+   "hasPrevPage": false
+  }
+ },
+ "success": true,
+ "reportTitle": "Arbitration Cases Report (General)"
+}

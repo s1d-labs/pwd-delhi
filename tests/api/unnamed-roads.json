@@ -1,0 +1,143 @@
+{
+ "data": {
+  "roads": [
+   {
+    "s_no": 1,
+    "id": 1221,
+    "asset_id": 1227,
+    "asset_code": "RD-00089",
+    "road_name": "Road No. 89",
+    "category": "B",
+    "starting_point": "Jn. Of Road No.58",
+    "end_point": "Jn. Of Road No.56",
+    "via_point": "Vivekanand Mahilla College",
+    "total_length_km": 1.6,
+    "no_of_lanes": 6,
+    "lane_length_km": 9.6,
+    "right_of_way_m": 30,
+    "status": "active",
+    "location": {
+     "zone_id": 4,
+     "zone": "East Maintenance Zone",
+     "circle_id": 10,
+     "circle": "Shahdara Maintenance Circle",
+     "division_id": 28,
+     "division": "Shahadra Road Division",
+     "subdivision_id": 760,
+     "subdivision": "Shahadra Roads Sub Division 1 Civil (M 2111)"
+    }
+   },
+   {
+    "s_no": 2,
+    "id": 1202,
+    "asset_id": 1208,
+    "asset_code": "RD-00087",
+    "road_name": "Road No. 87",
+    "category": "A",
+    "starting_point": "Road No.63",
+    "end_point": "Road No.64",
+    "via_point": "DC Office",
+    "total_length_km": 1.2,
+    "no_of_lanes": 6,
+    "lane_length_km": 7.2,
+    "right_of_way_m": 45.73,
+    "status": "active",
+    "location": {
+     "zone_id": 4,
+     "zone": "East Maintenance Zone",
+     "circle_id": 10,
+     "circle": "Shahdara Maintenance Circle",
+     "division_id": 28,
+     "division": "Shahadra Road Division",
+     "subdivision_id": 763,
+     "subdivision": "Shahadra Roads Sub Division 4 Civil (M 2114)"
+    }
+   },
+   {
+    "s_no": 3,
+    "id": 1191,
+    "asset_id": 1197,
+    "asset_code": "RD-00086",
+    "road_name": "Road No. 86",
+    "category": "A",
+    "starting_point": "Road No.69",
+    "end_point": "Railway Crossing",
+    "via_point": "Nand nagri",
+    "total_length_km": 1.4,
+    "no_of_lanes": 6,
+    "lane_length_km": 8.4,
+    "right_of_way_m": 45.73,
+    "status": "active",
+    "location": {
+     "zone_id": 4,
+     "zone": "East Maintenance Zone",
+     "circle_id": 10,
+     "circle": "Shahdara Maintenance Circle",
+     "division_id": 28,
+     "division": "Shahadra Road Division",
+     "subdivision_id": 763,
+     "subdivision": "Shahadra Roads Sub Division 4 Civil (M 2114)"
+    }
+   },
+   {
+    "s_no": 4,
+    "id": 1159,
+    "asset_id": 1165,
+    "asset_code": "RD-00083",
+    "road_name": "Road No. 83",
+    "category": "A",
+    "starting_point": "Swami Dayanand Hospital",
+    "end_point": "DLF More(U.P. Border)",
+    "via_point": "GTB Police Station",
+    "total_length_km": 3,
+    "no_of_lanes": 6,
+    "lane_length_km": 18,
+    "right_of_way_m": 45.73,
+    "status": "active",
+    "location": {
+     "zone_id": 4,
+     "zone": "East Maintenance Zone",
+     "circle_id": 10,
+     "circle": "Shahdara Maintenance Circle",
+     "division_id": 28,
+     "division": "Shahadra Road Division",
+     "subdivision_id": 763,
+     "subdivision": "Shahadra Roads Sub Division 4 Civil (M 2114)"
+    }
+   },
+   {
+    "s_no": 5,
+    "id": 1083,
+    "asset_id": 1089,
+    "asset_code": "RD-00071",
+    "road_name": "Road No. 71",
+    "category": "A",
+    "starting_point": "56-A T Junction",
+    "end_point": "Gazipur Mandi",
+    "via_point": "Gazipur Bus Depot",
+    "total_length_km": 1,
+    "no_of_lanes": 4,
+    "lane_length_km": 4,
+    "right_of_way_m": 45,
+    "status": "active",
+    "location": {
+     "zone_id": 4,
+     "zone": "East Maintenance Zone",
+     "circle_id": 10,
+     "circle": "Shahdara Maintenance Circle",
+     "division_id": 28,
+     "division": "Shahadra Road Division",
+     "subdivision_id": 760,
+     "subdivision": "Shahadra Roads Sub Division 1 Civil (M 2111)"
+    }
+   }
+  ],
+  "pagination": {
+   "current_page": 1,
+   "per_page": 5,
+   "total_records": 18,
+   "total_pages": 4
+  }
+ },
+ "success": true
+}

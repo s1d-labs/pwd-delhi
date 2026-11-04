@@ -1,0 +1,44 @@
+{
+ "content": [
+  {
+   "id": 3601,
+   "subject": "Implementation of Office Order No. 37 of 2026 in accordance with the conditions laid down in Office Order No. 78 of 2026.",
+   "referenceNo": "संख्याNo.9(2)/EC-II/East Zone/PWD/2026-27/7665-H",
+   "category": "office_order",
+   "fileUrl": "https://ppwddelhi.s3.ap-south-1.amazonaws.com/circular/1793708752643-576320754.pdf",
+   "isActive": true,
+   "uploadedBy": 5972,
+   "createdAt": "2026-11-03T00:00:00",
+   "updatedAt": "2026-11-03T12:25:52.730021"
+  },
+  {
+   "id": 3595,
+   "subject": "Constitution of a Committee for inspection and certification of fitness for the work \"Providing services of 200 Nos. Truck Mounted Anti-Smog Guns with Display of Environment Message to control dust pollution in Delhi by PWD during September 2026 to June 2027, September 2027 to June 2028 and September 2028 to June 2029\" and their deployment by 15.11.2026",
+   "referenceNo": "No.E-in-C/PWD/Works/OO/2026/604",
+   "category": "office_order",
+   "fileUrl": "https://ppwddelhi.s3.ap-south-1.amazonaws.com/circular/1793622491493-917673341.pdf",
+   "isActive": true,
+   "uploadedBy": 5972,
+   "createdAt": "2026-11-02T00:00:00",
+   "updatedAt": "2026-11-02T12:28:11.598679"
+  },
+  {
+   "id": 3596,
+   "subject": "उच्च श्रेणी लिपिक कर्मचारियों के लोक निर्माण विभाग (लो०नि०वि०) से लोक निर्माण विभाग में स्थानांतरण होने के फलस्वरूप सक्षम प्राधिकारी के अनुमोदन के उपरांत उनकी तैनाती के संबंध में।",
+   "referenceNo": "संख्या No. 9(2)/EC-II/East Zone/PWD/2026-27/7631-H",
+   "category": "office_order",
+   "fileUrl": "https://ppwddelhi.s3.ap-south-1.amazonaws.com/circular/1793687797410-771691861.pdf",
+   "isActive": true,
+   "uploadedBy": 5972,
+   "createdAt": "2026-11-02T00:00:00",
+   "updatedAt": "2026-11-03T06:36:37.50697"
+  }
+ ],
+ "number": 0,
+ "size": 100,
+ "totalElements": 3582,
+ "totalPages": 36,
+ "first": true,
+ "last": false,
+ "numberOfElements": 3
+}

@@ -1,47 +1,81 @@
-# family-template
+# pwd-delhi
 
-Start a new scraping family for the s1d-labs pool. A family is one kind of site (or one platform many sites share); the pool runs
-its code on members' GitHub Actions minutes. This template is a complete, working family for
-[books.toscrape.com](https://books.toscrape.com) (a public site made for scraping practice): copy it, then change it.
+This family of the s1d-labs scrape pool collects the public data of the Public Works Department (PWD), Government of NCT of
+Delhi, from <https://www.pwddelhi.gov.in>. The scraper reads the JSON APIs that the pages of the site use, and the pages of the
+sitemap.
 
-## Make your family
+## Data sets
 
-1. Ask the hub owner to **add the family** on [scrape.s1d.me/runners](https://scrape.s1d.me/runners) (name, what it scrapes, owner).
-   The hub creates `s1d-labs/<family>` from this template, names the family in `scrape.json`, and makes the owner admin
-   (with the GitHub account they added on home.s1d.me).
-2. Clone it: `gh repo clone s1d-labs/<family>`.
-3. In your repo:
-   - `scrape.json`: set `"family"` to the family name; list your tasks (one command each) and setup steps.
-   - `family.py`: your projects (one queue of work per site), their target hosts, the env your command needs, the queue items,
-     and the health checks.
-   - `crawl.py` (or whatever your tasks run): the scraper.
-4. **Check it**: `scrape-check` in the repo (needs `pip install "scrape-hub-client @ git+https://github.com/s1d-labs/runner@main#subdirectory=sdk"`).
-   It runs your setup and task against a local stand-in hub on 3 real items and says what works. The **check** workflow runs it
-   (and `tests/`) on every push.
-5. Run the **setup** workflow (Actions → setup → Run workflow). It registers the projects, puts them in the pool and registers
-   the health checks.
-6. The hub starts runs in members' accounts when the pool is on and there is work. Watch it on scrape.s1d.me.
+| Hub project | Source | Record | Rows on 2026-11-04 |
+|---|---|---|---|
+| `pwd-delhi-projects` | `/api/projects/search` | one work or project (cost, tender, contractor, progress, dates) | 13,139 |
+| `pwd-delhi-project-details` | `/api/projects/<id>` and its progress, location, inspection and photo calls | one project: status history, monthly progress, tender details, counts | 13,139 |
+| `pwd-delhi-circulars` | `/circular/api/search` | one circular or office order, with its file | 3,582 |
+| `pwd-delhi-court-cases` | `/api/litigation/court-cases/search` | one court case (active and archived) | 818 + 1,331 |
+| `pwd-delhi-arbitration` | `/api/litigation/arbitration-cases/search` | one arbitration case | 390 |
+| `pwd-delhi-contractors` | `/pms/api/contractors` | one contractor in the register | 9,014 |
+| `pwd-delhi-buildings` | `/api/maintenance/buildings/search` | one building | 1,011 |
+| `pwd-delhi-flyovers` | `/api/maintenance/flyovers/search` | one flyover | 78 |
+| `pwd-delhi-fobs` | `/api/maintenance/fobs/search` | one foot-over-bridge | 15 |
+| `pwd-delhi-subways` | `/api/maintenance/subways/search` | one subway | 62 |
+| `pwd-delhi-roads` | `/api/maintenance/roads/search` and `/api/maintenance/roads/<id>` | one road, with its details | 1,297 + 18 unnamed |
+| `pwd-delhi-street-lights` | `/street-light-inspection/api/data?date=` | one division on one day | about 3 per day |
+| `pwd-delhi-offices` | `/api/nodal-officers`, `/pms/api/users-tree` | one nodal office, or one office with its officers | 363 + 141 |
+| `pwd-delhi-pages` | the 170 pages of `sitemap.xml` (English and Hindi) | one page, one table row, or one linked document | 170 pages |
 
-## What your code gets
+- Each queue item is one API page (100 rows, or 25 projects for the project details), one day, or one site page.
+- The record id is the id that the site gives to the row.
+- Each record is flat. Numbers are numbers, dates are `YYYY-MM-DD`, and flags are `true` or `false`.
+- Amounts are the numbers that the API gives. The site shows them divided by 100,000, as lakh.
+- In `pwd-delhi-pages`, the field `record_type` tells the kind of record: `page`, `table_row` or `document`.
 
-The pool worker ([s1d-labs/runner](https://github.com/s1d-labs/runner)) checks out this repo at `main`, runs the `setup` steps from
-`scrape.json`, and for each assignment runs the task's command here with:
+The site has no data for these parts on 2026-11-04:
 
-| Variable | What |
-|---|---|
-| `SCRAPE_POOL_PROJECT` | the project to work on |
-| `SCRAPE_JOB_INDEX`, `SCRAPE_TOTAL_JOBS` | this worker's slice |
-| `SCRAPE_MAX_HOURS` | how long the command may run |
-| `SCRAPE_HUB_URL` | the hub |
-| your project's `env` | e.g. `SITE` |
+- The list of arbitrators, the list of consultants and the drain desilting page show "No data found".
+- The sanction search has no API. Its script says that the backend is not ready.
+- The complaints system (PWD Sewa) and the administration pages need a login. The scraper does not use them.
 
-Use `scrape_hub_client` (`HubClient`) to claim queue items, store records, upload files and report counters. Exit when there is
-nothing left; the worker then asks the hub for the next assignment.
+## Files in the bucket
 
-## Rules (the full contract is in CLAUDE.md, written for people and for Claude Code)
+- `<project>/pages/<key>.json.gz` or `.html.gz`: the API answer or the page for each queue item.
+- `pwd-delhi-circulars/files/<id>.<ext>`: the file of each circular.
+- `pwd-delhi-pages/docs/<doc id>.<ext>`: each document that a page links. The record of the document gives its URL.
+- `pwd-delhi-project-details/files/<project id>/<n>.<ext>`: the photos of a project, if the site has photos for it.
 
-- **Be polite.** Use `hub.settings["threads"]` and `delay_ms`, idle while `hub.settings["paused"]`, and report `n_http` and
-  `t_http_s` for every request and `http_<code>` / `http_error` for failures: the hub throttles you from these.
-- **Files go through the hub** (`hub.upload_many`): it signs each upload into the family's bucket (500 GB per member) and stops at
-  the cap. Never put storage keys in this repo.
-- **Public data only**; read the site's terms first. See the team docs on home.s1d.me (Scraping rules).
+## Contact data
+
+The records and the raw files do not keep phone numbers, e-mail addresses, fax numbers, PAN, bank details or login names. The records
+also do not keep the private addresses of parties in court cases. The function `scrub()` in `parsers.py` removes them.
+The records keep the names of firms, courts, arbitrators, advocates and officers.
+
+## Access from India only
+
+The site refuses foreign IP addresses. On 2026-11-04 it also refused the team proxies in the range `191.219.x`.
+It accepted only the proxies in the range `95.134.119.x` (in-08 to in-10). For this reason, each project uses
+`proxy="IN"` and `proxy_only=["95.134.119."]`. Files on S3 and the uploads go direct, not through the proxy.
+
+## Speed
+
+- Each worker thread waits 1 second after each request to the site.
+- Each worker uses 2 threads, or 4 threads for the circulars and the pages, where most of the work is file downloads from S3.
+- Not more than 3 workers run at the same time, because only 3 proxies get into the site.
+
+## Commands
+
+Run these commands in a team box:
+
+```
+python -m pytest tests                                               # parsing tests on saved API answers and pages
+myproxy run python crawl.py --local project-details 1                # one queue item, no hub (3 rows that need more calls)
+myproxy run scrape-check --items 2 --project pwd-delhi-buildings      # setup and task against a local test hub
+```
+
+- If `myproxy` gives a proxy in the range `191.219.x`, the site answers 403. Do `myproxy release` and try again.
+- The **check** workflow on GitHub cannot reach the site. Its parsing tests are valid. Its scrape-check step can fail.
+
+## A new full pass
+
+1. In `family.py`, set `CRAWL` to a new tag, for example `"2026-12"`.
+2. Set `FILES_SINCE` to the date of the last pass. The scraper then skips older circulars and their files.
+3. If the site has more rows, increase the numbers in `TOTALS`.
+4. Push the change, then run the **setup** workflow. Setup also adds the street-light days since the last run.

@@ -1,6 +1,6 @@
 {
   "family": "pwd-delhi",
-  "about": "PWD Delhi (pwddelhi.gov.in): projects, complaints, circulars, court cases",
+  "about": "PWD Delhi (www.pwddelhi.gov.in): works and projects, circulars (with files), court and arbitration cases, contractors",
   "setup": [
     "pip install -r requirements.txt"
   ],

@@ -1,0 +1,54 @@
+{
+ "totalStats": {
+  "installed": 25350,
+  "yetToBeRepaired": 412,
+  "working": 24916,
+  "repairedRectified": 22
+ },
+ "formattedDate": "03/11/2026",
+ "divisionDataByZone": {
+  "East Maintenance Zone": [
+   {
+    "divisionId": 26,
+    "divisionName": "East Building & Players Building Electrical Division",
+    "divisionCode": "M 253",
+    "zoneName": "East Maintenance Zone",
+    "zoneId": 4,
+    "installed": 6160,
+    "working": 6148,
+    "repairedRectified": 9,
+    "yetToBeRepaired": 3,
+    "targetDate": "2026-11-04T05:30:00",
+    "remarks": "The details of non-functional points observed during inspection are as under and work is going on to rectify them: -\n1.  Preet Vihar, Delhi-1 No\n2. Nirman Vihar-2 Nos\n3. Vikas Marg- 1 No\n"
+   },
+   {
+    "divisionId": 23,
+    "divisionName": "North East & Shahdara Electrical Division",
+    "divisionCode": "M 251",
+    "zoneName": "East Maintenance Zone",
+    "zoneId": 4,
+    "installed": 7067,
+    "working": 7045,
+    "repairedRectified": 0,
+    "yetToBeRepaired": 22,
+    "targetDate": "2026-11-07T05:30:00",
+    "remarks": "These defects are due to theft of wire/cable, panel accessories, fittings. The work is under process and these points will be rectified by  07-11-2026"
+   }
+  ],
+  "South Maintenance Zone": [
+   {
+    "divisionId": 21,
+    "divisionName": "South West Elect Maintenance Division",
+    "divisionCode": "M 152",
+    "zoneName": "South Maintenance Zone",
+    "zoneId": 3,
+    "installed": 12123,
+    "working": 11723,
+    "repairedRectified": 13,
+    "yetToBeRepaired": 387,
+    "targetDate": "2026-12-10T05:30:00",
+    "remarks": "Major work need to be done such as replacement of defective cables, fittings & accidental poles damaged by third party etc. However day to day maintenance has been attended on regular basis by TATA/BRPL/BYPL & rectified accordingly."
+   }
+  ]
+ }
+}

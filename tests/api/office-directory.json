@@ -1,0 +1,68 @@
+{
+ "success": true,
+ "data": [
+  {
+   "level": 1,
+   "address": "3rd Floor, MSO Building, I.P. Estate, New Delhi - 110002",
+   "officers": [
+    {
+     "name": "Test name 1",
+     "email": "someone@example.org",
+     "phone": "0000000000",
+     "user_id": 5967,
+     "designation_id": 267,
+     "designation_name": "Special Secretary"
+    }
+   ],
+   "children": [],
+   "office_id": 604,
+   "parent_id": null,
+   "office_name": "Secretariat",
+   "office_contact_no": "0000000000",
+   "office_email_id": null,
+   "has_children": false
+  },
+  {
+   "level": 1,
+   "address": "PWD Secretariat, 3rd Floor, MSO Building, I. P. Estate, New Delhi 110 002 ",
+   "officers": [
+    {
+     "name": "Test name 2",
+     "email": "someone@example.org",
+     "phone": "0000000000",
+     "user_id": 5965,
+     "designation_id": 317,
+     "designation_name": "Deputy Secretary (Works)"
+    }
+   ],
+   "children": [],
+   "office_id": 605,
+   "parent_id": null,
+   "office_name": "Secretariat",
+   "office_contact_no": "0000000000",
+   "office_email_id": null,
+   "has_children": false
+  },
+  {
+   "level": 1,
+   "address": "3rd Floor, MSO Building, I. P. Estate, New Delhi 110 002",
+   "officers": [
+    {
+     "name": "Test name 3",
+     "email": "someone@example.org",
+     "phone": "0000000000",
+     "user_id": 5968,
+     "designation_id": 267,
+     "designation_name": "Special Secretary"
+    }
+   ],
+   "children": [],
+   "office_id": 615,
+   "parent_id": null,
+   "office_name": "Secretariat",
+   "office_contact_no": "0000000000",
+   "office_email_id": null,
+   "has_children": false
+  }
+ ]
+}

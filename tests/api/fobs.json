@@ -1,0 +1,153 @@
+{
+ "data": {
+  "fobs": [
+   {
+    "s_no": 1,
+    "id": 16,
+    "asset_id": 2713,
+    "asset_code": "FOB-00016",
+    "fob_name": "Green Park FOB",
+    "location": "Near   Mosque/Church Sri Aurobindo Marg",
+    "cost": 40000000,
+    "cost_in_lakhs": "400.00",
+    "completion_date": null,
+    "escalators": "No",
+    "special_features": "",
+    "length_m": 100.7,
+    "width_m": 3,
+    "vertical_clearance_m": null,
+    "year_of_completion": null,
+    "status": "active",
+    "location_hierarchy": {
+     "zone_id": 3,
+     "zone": "South Maintenance Zone",
+     "circle_id": 5,
+     "circle": "South Maintenance Circle",
+     "division_id": 16,
+     "division": "South Road Division 2",
+     "subdivision_id": 877,
+     "subdivision": "South Road-2 Sub division 2"
+    }
+   },
+   {
+    "s_no": 2,
+    "id": 14,
+    "asset_id": 2711,
+    "asset_code": "FOB-00018",
+    "fob_name": "IIT Gate FOB",
+    "location": "Near  IIT  Gate  on  Sri\nAurobindo Marg",
+    "cost": 22200000,
+    "cost_in_lakhs": "222.00",
+    "completion_date": null,
+    "escalators": "No",
+    "special_features": null,
+    "length_m": 32.5,
+    "width_m": 3,
+    "vertical_clearance_m": null,
+    "year_of_completion": 2017,
+    "status": "active",
+    "location_hierarchy": {
+     "zone_id": 3,
+     "zone": "South Maintenance Zone",
+     "circle_id": 5,
+     "circle": "South Maintenance Circle",
+     "division_id": 16,
+     "division": "South Road Division 2",
+     "subdivision_id": 877,
+     "subdivision": "South Road-2 Sub division 2"
+    }
+   },
+   {
+    "s_no": 3,
+    "id": 15,
+    "asset_id": 2712,
+    "asset_code": "FOB-00017",
+    "fob_name": "Yusuf Sarai FOB",
+    "location": "Yusuf   Sarai   on   Sri\nAurobindo Marg",
+    "cost": 26700000,
+    "cost_in_lakhs": "267.00",
+    "completion_date": null,
+    "escalators": "No",
+    "special_features": null,
+    "length_m": 32.8,
+    "width_m": 3,
+    "vertical_clearance_m": null,
+    "year_of_completion": 2019,
+    "status": "active",
+    "location_hierarchy": {
+     "zone_id": 3,
+     "zone": "South Maintenance Zone",
+     "circle_id": 5,
+     "circle": "South Maintenance Circle",
+     "division_id": 16,
+     "division": "South Road Division 2",
+     "subdivision_id": 877,
+     "subdivision": "South Road-2 Sub division 2"
+    }
+   },
+   {
+    "s_no": 4,
+    "id": 17,
+    "asset_id": 2714,
+    "asset_code": "FOB-00015",
+    "fob_name": "PTS FOB",
+    "location": "At  PTS  Bus  Stop  Sri Aurobindo Marg",
+    "cost": 32700000,
+    "cost_in_lakhs": "327.00",
+    "completion_date": null,
+    "escalators": "No",
+    "special_features": null,
+    "length_m": 45.4,
+    "width_m": 3,
+    "vertical_clearance_m": null,
+    "year_of_completion": null,
+    "status": "active",
+    "location_hierarchy": {
+     "zone_id": 3,
+     "zone": "South Maintenance Zone",
+     "circle_id": 5,
+     "circle": "South Maintenance Circle",
+     "division_id": 16,
+     "division": "South Road Division 2",
+     "subdivision_id": 877,
+     "subdivision": "South Road-2 Sub division 2"
+    }
+   },
+   {
+    "s_no": 5,
+    "id": 18,
+    "asset_id": 2715,
+    "asset_code": "FOB-00014",
+    "fob_name": "Adhchini Village FOB",
+    "location": "At   Adhchini   Village Sri Aurobindo Marg",
+    "cost": 31200000,
+    "cost_in_lakhs": "312.00",
+    "completion_date": null,
+    "escalators": "No",
+    "special_features": null,
+    "length_m": 29.06,
+    "width_m": 3,
+    "vertical_clearance_m": null,
+    "year_of_completion": null,
+    "status": "active",
+    "location_hierarchy": {
+     "zone_id": 3,
+     "zone": "South Maintenance Zone",
+     "circle_id": 5,
+     "circle": "South Maintenance Circle",
+     "division_id": 16,
+     "division": "South Road Division 2",
+     "subdivision_id": 877,
+     "subdivision": "South Road-2 Sub division 2"
+    }
+   }
+  ],
+  "pagination": {
+   "current_page": 1,
+   "per_page": 5,
+   "total_records": 15,
+   "total_pages": 3
+  }
+ },
+ "success": true
+}

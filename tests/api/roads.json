@@ -1,0 +1,143 @@
+{
+ "data": {
+  "roads": [
+   {
+    "s_no": 1,
+    "id": 1307,
+    "asset_id": 2751,
+    "asset_code": "RD-02272",
+    "road_name": "Road from DTC Bus Terminal to Astha Kunj Road",
+    "category": "State",
+    "starting_point": "DTC Bus Terminal ORR",
+    "end_point": "Astha Kunj road",
+    "via_point": "",
+    "total_length_km": 0.533,
+    "no_of_lanes": 2,
+    "lane_length_km": 1.066,
+    "right_of_way_m": 18.5,
+    "status": "active",
+    "location": {
+     "zone_id": 3,
+     "zone": "South Maintenance Zone",
+     "circle_id": 4,
+     "circle": "South East Maintenance Circle",
+     "division_id": 12,
+     "division": "South East Road Division 2",
+     "subdivision_id": 828,
+     "subdivision": "South East Road 2 Sub Division 3"
+    }
+   },
+   {
+    "s_no": 2,
+    "id": 1306,
+    "asset_id": 2750,
+    "asset_code": "RD-02271",
+    "road_name": "Fire Station to MTNL",
+    "category": "State",
+    "starting_point": "Fire Station Outer Ring Road",
+    "end_point": "Eros Hotel",
+    "via_point": "",
+    "total_length_km": 0.67,
+    "no_of_lanes": 4,
+    "lane_length_km": 2.68,
+    "right_of_way_m": 19,
+    "status": "active",
+    "location": {
+     "zone_id": 3,
+     "zone": "South Maintenance Zone",
+     "circle_id": 4,
+     "circle": "South East Maintenance Circle",
+     "division_id": 12,
+     "division": "South East Road Division 2",
+     "subdivision_id": 828,
+     "subdivision": "South East Road 2 Sub Division 3"
+    }
+   },
+   {
+    "s_no": 3,
+    "id": 1305,
+    "asset_id": 2749,
+    "asset_code": "RD-02270",
+    "road_name": "Eros Hotel to T Point, Bahai Temple Nehru Place (Astha Kunj Road)",
+    "category": "State",
+    "starting_point": "Eros Hotel",
+    "end_point": "Bahai Temple Nehru Place",
+    "via_point": "",
+    "total_length_km": 0.9,
+    "no_of_lanes": 4,
+    "lane_length_km": 3.6,
+    "right_of_way_m": 26,
+    "status": "active",
+    "location": {
+     "zone_id": 3,
+     "zone": "South Maintenance Zone",
+     "circle_id": 4,
+     "circle": "South East Maintenance Circle",
+     "division_id": 12,
+     "division": "South East Road Division 2",
+     "subdivision_id": 828,
+     "subdivision": "South East Road 2 Sub Division 3"
+    }
+   },
+   {
+    "s_no": 4,
+    "id": 1304,
+    "asset_id": 2748,
+    "asset_code": "RD-02269",
+    "road_name": "Corner of IGNOU",
+    "category": "State",
+    "starting_point": "Corner of IGNOU",
+    "end_point": "Asia Pacific Mall",
+    "via_point": "",
+    "total_length_km": 0.11,
+    "no_of_lanes": 2,
+    "lane_length_km": 0.22,
+    "right_of_way_m": 15.5,
+    "status": "active",
+    "location": {
+     "zone_id": 3,
+     "zone": "South Maintenance Zone",
+     "circle_id": 4,
+     "circle": "South East Maintenance Circle",
+     "division_id": 12,
+     "division": "South East Road Division 2",
+     "subdivision_id": 827,
+     "subdivision": "South East Road 2 Sub Division 2"
+    }
+   },
+   {
+    "s_no": 5,
+    "id": 1303,
+    "asset_id": 2747,
+    "asset_code": "RD-02268",
+    "road_name": "Sugar federation to Police Park",
+    "category": "State",
+    "starting_point": "Sugar Federation",
+    "end_point": "Police Park",
+    "via_point": "",
+    "total_length_km": 0.07,
+    "no_of_lanes": 2,
+    "lane_length_km": 0.14,
+    "right_of_way_m": 16,
+    "status": "active",
+    "location": {
+     "zone_id": 3,
+     "zone": "South Maintenance Zone",
+     "circle_id": 4,
+     "circle": "South East Maintenance Circle",
+     "division_id": 12,
+     "division": "South East Road Division 2",
+     "subdivision_id": 827,
+     "subdivision": "South East Road 2 Sub Division 2"
+    }
+   }
+  ],
+  "pagination": {
+   "current_page": 1,
+   "per_page": 5,
+   "total_records": 1297,
+   "total_pages": 260
+  }
+ },
+ "success": true
+}
