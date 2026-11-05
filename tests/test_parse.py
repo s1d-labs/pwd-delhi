@@ -116,12 +116,13 @@ def test_queue_covers_the_site():
         keys = [i["key"] for i in p["items"]]
         assert len(keys) == len(set(keys)) and all(len(k) <= 200 for k in keys)
         assert p["name"].startswith(family.FAMILY + "-")
-        assert all(i["payload"]["kind"] in set(crawl.FLAT) | {"project-details", "project-details-ids", "street-lights", "pages"} for i in p["items"])
+        assert all(i["payload"]["kind"] in set(crawl.FLAT) | {"project-details", "project-details-ids", "projects-by-cost", "court-cases-by-filter", "street-lights", "pages"} for i in p["items"])
     assert all(re.fullmatch(r"[A-Za-z0-9._-]+", i["key"]) for p in family.PROJECTS for i in p["items"])   # keys are upload paths
     pages_ = next(p for p in family.PROJECTS if p["name"].endswith("-pages"))
     assert len(pages_["items"]) == len(family.PAGES) == 170
     court = next(p for p in family.PROJECTS if p["name"].endswith("court-cases"))
-    first = [i for i in court["items"] if not i["key"].startswith(family.CRAWL + "b")]     # the first pass ("b" is the second)
+    first = [i for i in court["items"] if not i["key"].startswith(family.CRAWL + "b")       # the first pass ("b" is the second)
+             and i["payload"]["kind"] == "court-cases"]
     assert sum(i["payload"].get("archived", False) for i in first) == family.pages(family.TOTALS["court-cases-archived"])
     assert sum(i["payload"]["expected"] for i in first) == family.TOTALS["court-cases"] + family.TOTALS["court-cases-archived"]
     details = next(p for p in family.PROJECTS if p["name"].endswith("-project-details"))
@@ -222,3 +223,28 @@ def test_project_photos_are_read_in_pages_of_100(monkeypatch):
     monkeypatch.setattr(crawl, "download", lambda hub, url: ("ok", b"jpg"))
     rid, rec = crawl.project_detail(hub, 141428, 0, 1, {})
     assert rec["n_media"] == 250 and rec["media_stored"] == 250 and rec["detail_complete"] is True
+
+
+def test_projects_by_cost_split_ranges_and_fall_back_to_filters(monkeypatch):
+    """A fake site: 250 projects with cost 0 (one value: no split helps) and 150 with costs 1..150 (split until <= 100).
+    Its paging hides 10 of the cost-0 projects; the per-zone lists show them."""
+    zero = [{"id": i, "zone_id": i % 3, "estimated_cost": None} for i in range(1, 251)]
+    paid = [{"id": 1000 + c, "zone_id": 0, "estimated_cost": str(c)} for c in range(1, 151)]
+
+    def fake_call(hub, method, url, params=None, **kw):
+        lo, hi = (float(x) for x in params["budget_range"].split("-"))
+        rows = [r for r in zero + paid if lo <= float(r["estimated_cost"] or 0) <= hi]
+        if "zoneId" in params:
+            rows = [r for r in rows if r["zone_id"] == params["zoneId"]]
+            shown = rows
+        else:
+            shown = [r for r in rows if not (r["estimated_cost"] is None and r["id"] <= 10)]   # paging never shows ids 1-10
+            shown = shown + shown[:10]
+        page = params["page"]
+        return {"content": shown[page * 100:(page + 1) * 100], "totalElements": len(rows), "totalPages": -(-len(shown) // 100)}
+
+    monkeypatch.setattr(crawl, "call", fake_call)
+    hub = crawl.LocalHub()
+    recs, failed, raw, more = crawl.handle_projects_by_cost(hub, {"lo": 0, "hi": 1000, "filters": {"zoneId": [0, 1, 2]}}, 1)
+    ids = {int(rid) for rid, _ in recs}
+    assert ids == {r["id"] for r in zero + paid} and failed == 0

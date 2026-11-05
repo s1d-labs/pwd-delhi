@@ -31,6 +31,11 @@ DETAIL_PAGE_SIZE = 25        # projects per project-details item (about 100 requ
 # (2026-11-04): paging missed about 600 projects and 19 cases. Records upsert by id, so a second pass ("b") of these lists adds
 # what the first one missed. Projects that the detail paging missed get their details by id (project_detail_ids_<n>.txt).
 DETAIL_ID_FILES = sorted(Path(__file__).parent.glob("project_detail_ids_*.txt"))
+# The second pass showed that the paging repeats the same rows every time, so the lists are also read without paging:
+# projects by cost range (each item splits its range until a query has not more than 100 rows), court cases as the union of
+# their lists per court, category and status. The filter ids (zones, divisions, courts, ...) are in filters.json.
+FILTERS = json.loads((Path(__file__).parent / "filters.json").read_text())
+COST_BOUNDS = [0, 100000, 500000, 1000000, 2500000, 5000000, 10000000, 50000000, 999999999999]   # rupees
 PROXY_ONLY = ["95.134.119."]  # the only proxy range the site let in on 2026-11-04
 STREET_LIGHTS_FROM = date(2026, 3, 1)   # the street-light report has data from mid-2026; earlier days come back empty
 
@@ -98,6 +103,18 @@ def detail_id_items():
     return out
 
 
+def cost_items():
+    return [{"key": f"{CRAWL}-cost-{lo}-{hi}", "payload": {"kind": "projects-by-cost", "lo": lo, "hi": hi, "expected": 0,
+                                                         "filters": FILTERS["projects"]}}
+            for lo, hi in zip(COST_BOUNDS, COST_BOUNDS[1:])]
+
+
+def court_filter_items():
+    return [{"key": f"{CRAWL}-filters-{s}", "payload": {"kind": "court-cases-by-filter", "archived": s == "archived", "expected": 0,
+                                                     "filters": FILTERS["court-cases"]}}
+            for s in ("active", "archived")]
+
+
 def project(kind, title, record_label, items, unit_label="page", **pool):
     return {
         "name": f"{FAMILY}-{kind}",
@@ -115,14 +132,16 @@ def project(kind, title, record_label, items, unit_label="page", **pool):
 
 PROJECTS = [
     project("projects", "PWD Delhi works and projects (PMS)", "project",
-            queue("projects", TOTALS["projects"]) + queue("projects", TOTALS["projects"], stem=f"{CRAWL}b", expected=0)),
+            queue("projects", TOTALS["projects"]) + queue("projects", TOTALS["projects"], stem=f"{CRAWL}b", expected=0)
+            + cost_items()),
     project("circulars", "PWD Delhi circulars and office orders (with files)", "circular", queue("circulars", TOTALS["circulars"]),
             threads=4),
     project("court-cases", "PWD Delhi court cases (active and archived)", "court case",
             queue("court-cases", TOTALS["court-cases"], stem=f"{CRAWL}-active")
             + queue("court-cases", TOTALS["court-cases-archived"], stem=f"{CRAWL}-archived", archived=True)
             + queue("court-cases", TOTALS["court-cases"], stem=f"{CRAWL}b-active", expected=0)
-            + queue("court-cases", TOTALS["court-cases-archived"], stem=f"{CRAWL}b-archived", archived=True, expected=0)),
+            + queue("court-cases", TOTALS["court-cases-archived"], stem=f"{CRAWL}b-archived", archived=True, expected=0)
+            + court_filter_items()),
     project("arbitration", "PWD Delhi arbitration cases", "arbitration case", queue("arbitration", TOTALS["arbitration"])),
     project("contractors", "PWD Delhi contractors (PMS register)", "contractor", queue("contractors", TOTALS["contractors"])),
     project("project-details", "PWD Delhi project details (progress, status history, inspections, photos)", "project",

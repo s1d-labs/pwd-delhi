@@ -325,12 +325,111 @@ def handle_page(hub, pl, attempt):
     return [(page["page_id"], page)] + rows + drecs, len(todo) - len(drecs), None, False
 
 
+class Incomplete(Exception):
+    """A request of a filtered union failed: the item fails and is retried."""
+
+
+def union_pages(hub, fetch, seen, bucket=None):
+    """All pages of one query: fetch(page) -> (rows, total, pages). Rows go into `seen` (id -> row) and `bucket` (ids)."""
+    page, pages, total = 0, 1, 0
+    while page < pages:
+        if time.time() > DEADLINE:
+            raise Incomplete("time budget")
+        out = fetch(page)
+        if out is None:
+            raise Incomplete("a page did not load")
+        rows, total, pages = out
+        for r in rows:
+            seen[r["id"]] = r
+            if bucket is not None:
+                bucket.add(r["id"])
+        page += 1
+    return total
+
+
+def handle_projects_by_cost(hub, pl, attempt):
+    """Projects with a cost in [lo, hi] (budget_range, inclusive, in rupees). The list sorts on a column with many equal values,
+    so paging repeats some rows and never shows others; a query with not more than 100 rows has one page and is complete.
+    A range with more rows is split in two ([lo, mid] and [mid, hi]: costs have paise). A range of one rupee that still has more
+    rows (projects with no cost are all at 0) is read as the union of its lists per zone, circle, division, sub-division and
+    category, and the union must reach the range's total (else a 'cost_bucket_short' failure)."""
+    filters = pl.get("filters") or {}
+    seen = {}
+
+    def fetch(lo, hi, page=0, **extra):
+        doc = call(hub, "GET", f"{SITE}/api/projects/search", params={"page": page, "size": 100, "budget_range": f"{lo}-{hi}", **extra})
+        if doc is None:
+            return None
+        return doc.get("content") or [], int(doc.get("totalElements") or 0), int(doc.get("totalPages") or 0)
+
+    def split(lo, hi):
+        if time.time() > DEADLINE:
+            raise Incomplete("time budget")
+        out = fetch(lo, hi)
+        if out is None:
+            raise Incomplete("a page did not load")
+        rows, total, _ = out
+        if total <= 100:
+            for r in rows:
+                seen[r["id"]] = r
+            return
+        if hi - lo > 1:
+            mid = (lo + hi) // 2
+            split(lo, mid)
+            split(mid, hi)
+            return
+        bucket = set()
+        queries = [{}] + [{dim: v} for dim, vals in filters.items() for v in vals]
+        totals = pmap(hub, lambda q: union_pages(hub, lambda pg: fetch(lo, hi, pg, **q), seen, bucket), queries)
+        hub.metric("cost_bucket_queries", len(queries))
+        if len(bucket) < totals[0]:
+            hub.failure("cost_bucket_short", f"projects-{lo}-{hi}", f"{len(bucket)} of {totals[0]} projects found", lo=lo, hi=hi)
+
+    try:
+        split(int(pl["lo"]), int(pl["hi"]))
+    except Incomplete:
+        return None
+    recs = [(str(i), flat_project(scrub(r))) for i, r in seen.items()]
+    return recs, 0, {"lo": pl["lo"], "hi": pl["hi"], "rows": [scrub(r) for r in seen.values()]}, False
+
+
+def handle_court_cases_by_filter(hub, pl, attempt):
+    """Active (or archived) court cases as the union of the list and its lists per court, case category and status: the
+    list sorts on a column with many equal values, so its paging repeats some cases and never shows others."""
+    filters = pl.get("filters") or {}
+    seen, bucket = {}, set()
+
+    def fetch(page, **extra):
+        method, url, params, _ = request_for(SITE, "court-cases", page + 1, 100, bool(pl.get("archived")))
+        doc = call(hub, method, url, params={**params, **extra})
+        if doc is None:
+            return None
+        data = doc.get("data") or {}
+        pg = data.get("pagination") or {}
+        return data.get("cases") or [], int(pg.get("totalItems") or 0), int(pg.get("totalPages") or 0)
+
+    queries = [{}] + [{dim: v} for dim, vals in filters.items() for v in vals]
+    try:
+        totals = pmap(hub, lambda q: union_pages(hub, lambda pg: fetch(pg, **q), seen, bucket), queries)
+    except Incomplete:
+        return None
+    if len(bucket) < totals[0]:
+        hub.failure("court_cases_short", "court-cases-" + ("archived" if pl.get("archived") else "active"),
+                    f"{len(bucket)} of {totals[0]} cases found")
+    recs = [(str(i), flat_court_case(scrub(r))) for i, r in seen.items()]
+    return recs, 0, {"rows": [scrub(r) for r in seen.values()]}, False
+
+
 def handle(hub, kind, item):
     pl, attempt = {**item["payload"], "key": item["key"]}, int(item.get("attempts") or 1)
     if kind == "project-details":
         return handle_project_details(hub, pl, attempt)
     if kind == "project-details-ids":
         return handle_project_detail_ids(hub, pl, attempt)
+    if kind == "projects-by-cost":
+        return handle_projects_by_cost(hub, pl, attempt)
+    if kind == "court-cases-by-filter":
+        return handle_court_cases_by_filter(hub, pl, attempt)
     if kind == "pages":
         return handle_page(hub, pl, attempt)
     return handle_list(hub, kind, pl, attempt)
