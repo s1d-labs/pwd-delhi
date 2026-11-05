@@ -50,8 +50,8 @@ def detail_requests(site, project_id):
     return {"detail": b, "progress": f"{b}/progress-chart", "locations": f"{b}/location-history", "inspections": f"{b}/inspections"}
 
 
-def media_request(site, project_id):
-    return f"{site}/api/projects/{project_id}/media?limit=100&offset=0"
+def media_request(site, project_id, offset=0):
+    return f"{site}/api/projects/{project_id}/media?limit=100&offset={offset}"
 
 
 def road_request(site, road_id):

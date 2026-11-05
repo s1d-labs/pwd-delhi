@@ -116,13 +116,17 @@ def test_queue_covers_the_site():
         keys = [i["key"] for i in p["items"]]
         assert len(keys) == len(set(keys)) and all(len(k) <= 200 for k in keys)
         assert p["name"].startswith(family.FAMILY + "-")
-        assert all(i["payload"]["kind"] in set(crawl.FLAT) | {"project-details", "street-lights", "pages"} for i in p["items"])
+        assert all(i["payload"]["kind"] in set(crawl.FLAT) | {"project-details", "project-details-ids", "street-lights", "pages"} for i in p["items"])
     assert all(re.fullmatch(r"[A-Za-z0-9._-]+", i["key"]) for p in family.PROJECTS for i in p["items"])   # keys are upload paths
     pages_ = next(p for p in family.PROJECTS if p["name"].endswith("-pages"))
     assert len(pages_["items"]) == len(family.PAGES) == 170
     court = next(p for p in family.PROJECTS if p["name"].endswith("court-cases"))
-    assert sum(i["payload"].get("archived", False) for i in court["items"]) == family.pages(family.TOTALS["court-cases-archived"])
-    assert sum(i["payload"]["expected"] for i in court["items"]) == family.TOTALS["court-cases"] + family.TOTALS["court-cases-archived"]
+    first = [i for i in court["items"] if not i["key"].startswith(family.CRAWL + "b")]     # the first pass ("b" is the second)
+    assert sum(i["payload"].get("archived", False) for i in first) == family.pages(family.TOTALS["court-cases-archived"])
+    assert sum(i["payload"]["expected"] for i in first) == family.TOTALS["court-cases"] + family.TOTALS["court-cases-archived"]
+    details = next(p for p in family.PROJECTS if p["name"].endswith("-project-details"))
+    by_id = [i for i in details["items"] if i["payload"]["kind"] == "project-details-ids"]
+    assert by_id and all(1 <= len(i["payload"]["ids"]) <= family.DETAIL_PAGE_SIZE for i in by_id)
 
 
 def test_maintenance_inventory():
@@ -195,3 +199,26 @@ def test_pages_text_tables_and_documents():
 
 def test_scrub_removes_emails_in_free_text():
     assert crawl.scrub({"address": "MSO Building, New Delhi-110002Email ID: someone@example.org"}) == {"address": "MSO Building, New Delhi-110002"}
+
+
+def test_project_photos_are_read_in_pages_of_100(monkeypatch):
+    """A project with 250 photos: the media list is read at offset 0, 100 and 200, and every photo is kept."""
+    hub = crawl.LocalHub()
+    parts = load("project-detail-parts")
+    detail = json.loads(json.dumps(parts["detail"]))
+    detail["data"]["media"] = {"items": [], "total": 250}
+
+    def fake_call(hub, method, url, **kw):
+        if "/media?" in url:
+            off = int(url.rsplit("offset=", 1)[1])
+            items = [{"id": n, "file_url": f"https://example-bucket.s3.amazonaws.com/p/{n}.jpg"} for n in range(off, min(off + 100, 250))]
+            return {"success": True, "data": {"items": items, "total": 250, "offset": off, "limit": 100}}
+        for k, v in (("progress-chart", "progress"), ("location-history", "locations"), ("inspections", "inspections")):
+            if url.endswith(k):
+                return parts[v]
+        return detail
+
+    monkeypatch.setattr(crawl, "call", fake_call)
+    monkeypatch.setattr(crawl, "download", lambda hub, url: ("ok", b"jpg"))
+    rid, rec = crawl.project_detail(hub, 141428, 0, 1, {})
+    assert rec["n_media"] == 250 and rec["media_stored"] == 250 and rec["detail_complete"] is True

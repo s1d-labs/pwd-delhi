@@ -226,45 +226,73 @@ def handle_list(hub, kind, pl, attempt):
     return recs, failed, raw, more
 
 
+def project_detail(hub, pid, media_hint, attempt, raws):
+    """(record id, record) for one project's detail window, or None (it failed for now; stored with what loaded from the
+    third attempt). Photos: the media list is read in pages of 100 until its total, and each photo goes to the bucket."""
+    if pid is None or time.time() > DEADLINE:
+        return None
+    parts = {k: call(hub, "GET", u) for k, u in detail_requests(SITE, pid).items()}
+    media = ((parts.get("detail") or {}).get("data") or {}).get("media") or {}
+    total = (media.get("total") or 0) if isinstance(media, dict) else 0
+    if media_hint > 0 or total > 0:
+        first = call(hub, "GET", media_request(SITE, pid))
+        parts["media"] = first
+        if first is not None:
+            items = media_items({"media": first})
+            total = max(total, int(((first.get("data") or {}) if isinstance(first.get("data"), dict) else {}).get("total") or 0))
+            offset = len(items)
+            while items and offset < total and time.time() < DEADLINE:
+                nxt = call(hub, "GET", media_request(SITE, pid, offset))
+                more = media_items({"media": nxt}) if nxt is not None else []
+                if nxt is None:
+                    parts["media"] = None          # incomplete: retried later
+                    break
+                if not more:
+                    break
+                items += more
+                offset += len(more)
+            if parts["media"] is not None:
+                parts["media"] = {"success": True, "data": {"items": items, "total": total}}
+    complete = all(v is not None for v in parts.values())
+    if not complete and attempt < 3:
+        return None
+    parts = {k: scrub(v) if v is not None else None for k, v in parts.items()}
+    raws[str(pid)] = parts
+    rec = flat_project_detail(pid, parts)
+    stored = 0
+    for i, m in enumerate(media_items(parts), 1):
+        url = media_url(m)
+        if not url:
+            continue
+        status, data = download(hub, url)
+        if status == "ok":
+            ext = file_ext(url)
+            keep_file(hub, f"files/{pid}/{m.get('id') or i}.{ext}", data, ext)
+            stored += 1
+        else:
+            hub.failure("photo", f"project-{pid}-{m.get('id') or i}", f"photo did not load ({status})", url=url)
+    rec.update({"media_stored": stored, "detail_complete": complete})
+    return str(pid), rec
+
+
 def handle_project_details(hub, pl, attempt):
+    """A page of the project list, then the detail window of each project on it."""
     doc = fetch_api(hub, "project-details", int(pl["page"]), int(pl.get("size", 25)))
     if doc is None:
         return None
     rows, more = rows_and_more("project-details", doc)
     raws = {}
-
-    def one(row):
-        pid = row.get("id")
-        if pid is None or time.time() > DEADLINE:
-            return None
-        parts = {k: call(hub, "GET", u) for k, u in detail_requests(SITE, pid).items()}
-        media_total = ((parts.get("detail") or {}).get("data") or {}).get("media") or {}
-        if (row.get("media_count") or 0) > 0 or (isinstance(media_total, dict) and (media_total.get("total") or 0) > 0):
-            parts["media"] = call(hub, "GET", media_request(SITE, pid))
-        complete = all(v is not None for v in parts.values())
-        if not complete and attempt < 3:
-            return None
-        parts = {k: scrub(v) if v is not None else None for k, v in parts.items()}
-        raws[str(pid)] = parts
-        rec = flat_project_detail(pid, parts)
-        stored = 0
-        for i, m in enumerate(media_items(parts), 1):
-            url = media_url(m)
-            if not url:
-                continue
-            status, data = download(hub, url)
-            if status == "ok":
-                ext = file_ext(url)
-                keep_file(hub, f"files/{pid}/{m.get('id') or i}.{ext}", data, ext)
-                stored += 1
-            else:
-                hub.failure("photo", f"project-{pid}-{m.get('id') or i}", f"photo did not load ({status})", url=url)
-        rec.update({"media_stored": stored, "detail_complete": complete})
-        return str(pid), rec
-
     todo = limit(rows)
-    recs = [d for d in pmap(hub, one, todo) if d]
+    recs = [d for d in pmap(hub, lambda r: project_detail(hub, r.get("id"), r.get("media_count") or 0, attempt, raws), todo) if d]
     return recs, len(todo) - len(recs), {"list": scrub(doc), "details": raws}, more
+
+
+def handle_project_detail_ids(hub, pl, attempt):
+    """The detail window of the given project ids (no list page): for projects that list paging missed."""
+    raws = {}
+    todo = limit(list(pl["ids"]))
+    recs = [d for d in pmap(hub, lambda pid: project_detail(hub, pid, 0, attempt, raws), todo) if d]
+    return recs, len(todo) - len(recs), {"details": raws}, False
 
 
 def handle_page(hub, pl, attempt):
@@ -301,6 +329,8 @@ def handle(hub, kind, item):
     pl, attempt = {**item["payload"], "key": item["key"]}, int(item.get("attempts") or 1)
     if kind == "project-details":
         return handle_project_details(hub, pl, attempt)
+    if kind == "project-details-ids":
+        return handle_project_detail_ids(hub, pl, attempt)
     if kind == "pages":
         return handle_page(hub, pl, attempt)
     return handle_list(hub, kind, pl, attempt)
@@ -349,6 +379,8 @@ def local(kind, arg):
         payload["date"] = arg or day(time.strftime("%Y-%m-%d"))
     elif kind == "pages":
         payload["url"] = arg or SITE + "/"
+    elif kind == "project-details-ids":
+        payload["ids"] = [int(x) for x in (arg or "").split(",") if x]
     else:
         payload["page"] = int(arg or 1)
         payload["size"] = 25 if kind == "project-details" else 100

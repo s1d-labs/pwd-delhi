@@ -27,6 +27,10 @@ CRAWL = "2026-11"            # tag in every queue key; change it for a new full 
 FILES_SINCE = ""             # "" = all circulars and their files; a later pass: the date of the last pass ("2026-11-04")
 PAGE_SIZE = 100              # rows per API page (the site's own maximum in its page-size menus)
 DETAIL_PAGE_SIZE = 25        # projects per project-details item (about 100 requests each)
+# The project and court-case lists sort on a column with many equal values, and their order changed during the first crawl
+# (2026-11-04): paging missed about 600 projects and 19 cases. Records upsert by id, so a second pass ("b") of these lists adds
+# what the first one missed. Projects that the detail paging missed get their details by id (project_detail_ids_<n>.txt).
+DETAIL_ID_FILES = sorted(Path(__file__).parent.glob("project_detail_ids_*.txt"))
 PROXY_ONLY = ["95.134.119."]  # the only proxy range the site let in on 2026-11-04
 STREET_LIGHTS_FROM = date(2026, 3, 1)   # the street-light report has data from mid-2026; earlier days come back empty
 
@@ -82,6 +86,18 @@ def street_light_days(until=None):
     return out
 
 
+def detail_id_items():
+    out = []
+    for f in DETAIL_ID_FILES:
+        ids = [int(x) for x in f.read_text().split() if x.strip()]
+        batch = f.stem.rsplit("_", 1)[-1]
+        for n in range(0, len(ids), DETAIL_PAGE_SIZE):
+            chunk = ids[n:n + DETAIL_PAGE_SIZE]
+            out.append({"key": f"{CRAWL}-ids{batch}-{n // DETAIL_PAGE_SIZE + 1:04d}",
+                        "payload": {"kind": "project-details-ids", "ids": chunk, "expected": len(chunk)}})
+    return out
+
+
 def project(kind, title, record_label, items, unit_label="page", **pool):
     return {
         "name": f"{FAMILY}-{kind}",
@@ -98,16 +114,19 @@ def project(kind, title, record_label, items, unit_label="page", **pool):
 
 
 PROJECTS = [
-    project("projects", "PWD Delhi works and projects (PMS)", "project", queue("projects", TOTALS["projects"])),
+    project("projects", "PWD Delhi works and projects (PMS)", "project",
+            queue("projects", TOTALS["projects"]) + queue("projects", TOTALS["projects"], stem=f"{CRAWL}b", expected=0)),
     project("circulars", "PWD Delhi circulars and office orders (with files)", "circular", queue("circulars", TOTALS["circulars"]),
             threads=4),
     project("court-cases", "PWD Delhi court cases (active and archived)", "court case",
             queue("court-cases", TOTALS["court-cases"], stem=f"{CRAWL}-active")
-            + queue("court-cases", TOTALS["court-cases-archived"], stem=f"{CRAWL}-archived", archived=True)),
+            + queue("court-cases", TOTALS["court-cases-archived"], stem=f"{CRAWL}-archived", archived=True)
+            + queue("court-cases", TOTALS["court-cases"], stem=f"{CRAWL}b-active", expected=0)
+            + queue("court-cases", TOTALS["court-cases-archived"], stem=f"{CRAWL}b-archived", archived=True, expected=0)),
     project("arbitration", "PWD Delhi arbitration cases", "arbitration case", queue("arbitration", TOTALS["arbitration"])),
     project("contractors", "PWD Delhi contractors (PMS register)", "contractor", queue("contractors", TOTALS["contractors"])),
     project("project-details", "PWD Delhi project details (progress, status history, inspections, photos)", "project",
-            queue("project-details", TOTALS["projects"], size=DETAIL_PAGE_SIZE)),
+            queue("project-details", TOTALS["projects"], size=DETAIL_PAGE_SIZE) + detail_id_items()),
     project("buildings", "PWD Delhi maintenance inventory: buildings", "building", queue("buildings", TOTALS["buildings"])),
     project("flyovers", "PWD Delhi maintenance inventory: flyovers", "flyover", queue("flyovers", TOTALS["flyovers"])),
     project("fobs", "PWD Delhi maintenance inventory: foot-over-bridges", "foot-over-bridge", queue("fobs", TOTALS["fobs"])),
